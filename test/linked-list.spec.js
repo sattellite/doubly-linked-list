@@ -1,3 +1,4 @@
+/* eslint-disable */
 const Node = require('../src/node');
 const LinkedList = require('../src/linked-list');
 
