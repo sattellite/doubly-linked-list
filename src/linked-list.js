@@ -50,7 +50,36 @@ class LinkedList {
     return node.data;
   }
 
-  insertAt(index, data) {}
+  insertAt(index, data) {
+    let node = this._head;
+    let currentIndex = 0;
+    const len = this.length;
+
+    if (index < 0 || index > (len - 1)) {
+      throw new Error('Incorrect index');
+    }
+
+    while (currentIndex < index) {
+      node = node.next;
+      currentIndex += 1;
+    }
+
+    const newNode = new Node(data, node.prev, node);
+
+    // Adding to tail
+    if (index === (len - 1)) {
+      this._tail.next = newNode;
+      this._tail = newNode;
+    } else if (index === 0) { // Adding to head
+      this._head = newNode;
+    }
+
+    node.prev.next = newNode;
+    node.prev = newNode;
+
+    this.length += 1;
+    return newNode;
+  }
 
   isEmpty() {
     return this.length === 0;
