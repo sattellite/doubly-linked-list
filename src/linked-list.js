@@ -26,11 +26,11 @@ class LinkedList {
   }
 
   head() {
-    return this._head.data;
+    return this._head ? this._head.data : null;
   }
 
   tail() {
-    return this._tail.data;
+    return this._tail ? this._tail.data : null;
   }
 
   at(index) {
@@ -52,9 +52,19 @@ class LinkedList {
 
   insertAt(index, data) {}
 
-  isEmpty() {}
+  isEmpty() {
+    return this.length === 0;
+  }
 
-  clear() {}
+  clear() {
+    delete this._head;
+    delete this._tail;
+    this.length = 0;
+    this._head = null;
+    this._tail = null;
+
+    return this;
+  }
 
   deleteAt(index) {}
 
