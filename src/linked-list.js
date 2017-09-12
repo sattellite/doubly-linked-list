@@ -33,7 +33,22 @@ class LinkedList {
     return this._tail.data;
   }
 
-  at(index) {}
+  at(index) {
+    let node = this._head;
+    let currentIndex = 0;
+    const len = this.length;
+
+    if (len === 0 || index < 0 || index > (len - 1)) {
+      throw new Error('Non-existent node');
+    }
+
+    while (currentIndex < index) {
+      node = node.next;
+      currentIndex += 1;
+    }
+
+    return node.data;
+  }
 
   insertAt(index, data) {}
 
