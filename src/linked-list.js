@@ -115,14 +115,28 @@ class LinkedList {
 
   reverse() {
     let node = this._head;
-    while(node) {
+    while (node) {
       [node.next, node.prev] = [node.prev, node.next];
       node = node.prev;
     }
     [this._head, this._tail] = [this._tail, this._head];
   }
 
-  indexOf(data) {}
+  indexOf(data) {
+    let result = -1;
+    let node = this._head;
+    let index = 0;
+
+    while (node) {
+      if (node.data === data) {
+        result = index;
+        break;
+      }
+      node = node.next;
+      index += 1;
+    }
+    return result;
+  }
 }
 
 module.exports = LinkedList;
