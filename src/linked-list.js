@@ -95,7 +95,23 @@ class LinkedList {
     return this;
   }
 
-  deleteAt(index) {}
+  deleteAt(index) {
+    let node = this._head;
+    let currentIndex = 0;
+    const len = this.length;
+
+    if (index < 0 || index > (len - 1)) {
+      throw new Error('Incorrect index');
+    }
+
+    while (currentIndex < index) {
+      node = node.next;
+      currentIndex += 1;
+    }
+
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
+  }
 
   reverse() {}
 
