@@ -56,7 +56,7 @@ class LinkedList {
     let currentIndex = 0;
     const len = this.length;
 
-    if (index < 0 || index > (len - 1)) {
+    if (index < 0 || index > (len - (len > 0) ? 1 : 0)) {
       throw new Error('Incorrect index');
     }
 
@@ -65,7 +65,7 @@ class LinkedList {
       currentIndex += 1;
     }
 
-    const newNode = new Node(data, node.prev, node);
+    const newNode = new Node(data, node ? node.prev : null, node);
 
     // Adding to tail
     if (index === (len - 1)) {
@@ -75,8 +75,10 @@ class LinkedList {
       this._head = newNode;
     }
 
-    node.prev.next = newNode;
-    node.prev = newNode;
+    if (node) {
+      node.prev.next = newNode;
+      node.prev = newNode;
+    }
 
     this.length += 1;
 
@@ -111,8 +113,12 @@ class LinkedList {
       currentIndex += 1;
     }
 
-    node.prev.next = node.next;
-    node.next.prev = node.prev;
+    if (node.prev) {
+      node.prev.next = node.next;
+    }
+    if (node.next) {
+      node.next.prev = node.prev;
+    }
 
     return this;
   }
