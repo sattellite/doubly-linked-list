@@ -113,7 +113,14 @@ class LinkedList {
     node.next.prev = node.prev;
   }
 
-  reverse() {}
+  reverse() {
+    let node = this._head;
+    while(node) {
+      [node.next, node.prev] = [node.prev, node.next];
+      node = node.prev;
+    }
+    [this._head, this._tail] = [this._tail, this._head];
+  }
 
   indexOf(data) {}
 }
