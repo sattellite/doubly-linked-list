@@ -22,7 +22,8 @@ class LinkedList {
     }
 
     this.length += 1;
-    return node;
+
+    return this;
   }
 
   head() {
@@ -78,7 +79,8 @@ class LinkedList {
     node.prev = newNode;
 
     this.length += 1;
-    return newNode;
+
+    return this;
   }
 
   isEmpty() {
@@ -111,6 +113,8 @@ class LinkedList {
 
     node.prev.next = node.next;
     node.next.prev = node.prev;
+
+    return this;
   }
 
   reverse() {
@@ -120,6 +124,8 @@ class LinkedList {
       node = node.prev;
     }
     [this._head, this._tail] = [this._tail, this._head];
+
+    return this;
   }
 
   indexOf(data) {
